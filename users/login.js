@@ -1,25 +1,29 @@
 const express = require('express');
 const app = express();
-app.use
+app.use(express.urlencoded({extended:true }));
 
-router.get("/", (req, res) => {
-    res.render("users/login", {
-        pageTitle: "Login"
-    });
-});
-
-app.post('/login', (req, res) => {
+app.post('/login', (req,res) => {
   const { username, password } = req.body;
+  const connection = require('./db-connection');
 
-  if (username === 'admin' && password === 'password') {
-    req.session.authenticated = true;
-    res.redirect("/");
-  } else {
-    res.render("users/login", {
-                        pageTitle: "Error",
-                        error: "Incorrect password."
-                    })
-  }
+  const preparedStatement = connection.prepareStatement(
+    `SELECT * FROM users WHERE username = ? AND password = ? AND user_type = 2`
+  );
+  preparedStatement.setString(1,username);
+  preparedStatement.setString(2,password);
+
+  preparedStatement.executeQuery((error, result) => {
+    if(error){
+      console.error(error);
+      res.send({success:false, message: 'An error occured'});
+    }
+    else{
+      if(result.length > 0){
+        res.send({sucess:true, user: result[0]});
+      }
+      else{
+        res.send({sucess:false, message: 'Invalid username or password'});
+      }
+    }
+  });
 });
-
-module.exports = router;
