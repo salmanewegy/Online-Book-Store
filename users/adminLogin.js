@@ -1,6 +1,9 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const app = express();
-app.use(express.urlencoded({extended:true }));
+
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
 
 app.post('/adminLogin', (req,res) => {
   const { username, password } = req.body;
@@ -19,7 +22,11 @@ app.post('/adminLogin', (req,res) => {
     }
     else{
       if(result.length > 0){
-        res.send({sucess:true, user: result[0]});
+        const user = result[0];
+        res.cookie('userId', user.id, {
+          maxAge: 24 * 60 * 60 * 1000, //1 day onlyyy
+        });
+        res.redirect('/viewBooks.html');
       }
       else{
         res.send({sucess:false, message: 'Invalid username or password'});
