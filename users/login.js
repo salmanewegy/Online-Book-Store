@@ -27,6 +27,9 @@ app.post('/login', (req, res) => {
           maxAge: 24 * 60 * 60 * 1000, //1 day onlyyy
         });
         res.redirect('/viewBooks.html');
+        pw.println("<div class=\"tab hd brown\">User Login Successful !</div><br/>");
+				pw.println("<div class=\"tab\"><a href=\".store/viewBooks.html">VIEW BOOKS</a></div>");
+				pw.println("<div class='tab'><a href=\".store/buyBooks.html">BUY BOOKS</a></div>");
       }
       else {
         res.send({ sucess: false, message: 'Invalid username or password' });
