@@ -214,3 +214,13 @@ header nav .button:hover{
 	border-width: 1px;
 	border-color: #078707;
 }
+input {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			box-sizing: border-box;
+}
+.Form{
+  display: flex;
+  flex-direction: column;  
+}
