@@ -1,10 +1,12 @@
 const searchRoute = require('./store/search');
 const loginRoute = require('./users/login');
+const adminLoginRoute = require('./users/adminLogin');
 const registerRoute = require('./users/registration');
 
 const constructorMethod = (app) => {
     app.use("/", searchRoute);
     app.use("/login", loginRoute);
+    app.use("/adminLogin", loginRoute);
     app.use("/register", registerRoute);
 
     app.use("*", (req, res) => {
