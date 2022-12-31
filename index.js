@@ -1,20 +1,11 @@
-const searchRoute = require('./store/search');
-const loginRoute = require('./users/login');
-const adminLoginRoute = require('./users/adminLogin');
-const registerRoute = require('./users/registration');
+const loginRoute = require('./routes/login');
+const registerRoute = require('./routes/userRegister');
+const adminLoginRoute = require('./routes/adminLogin');
 
 const constructorMethod = (app) => {
-    app.use("/", searchRoute);
-    app.use("/login", loginRoute);
-    app.use("/adminLogin", loginRoute);
+    app.use("/userLogin", loginRoute);
     app.use("/register", registerRoute);
+    app.use("/adminLogin", adminLoginRoute);
 
-    app.use("*", (req, res) => {
-        res.render("error/static", {
-            error: "Page not found."
-        });
-    });
+
 };
-
-module.exports = constructorMethod;
-

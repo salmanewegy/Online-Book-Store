@@ -1,0 +1,55 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+	<title>Book Store</title>
+	<link rel="stylesheet" href="style.css"/>
+</head>
+<body>	
+	<div id="topmid">
+		<h1>Welcome to Online Book Store</h1>
+	</div>
+	
+	<div class="home">
+		<a href="users/adminLogin">Home</a>
+	</div>
+	
+	<div class="home">
+		<a href="store/viewBooks">Available Books</a>
+	</div>
+
+	<div class="home">
+		<a href="index.html">Logout</a>
+	</div>
+	
+	<table class="tab hd brown">
+		<tr>
+			<td>Add Books</td>
+		</tr>
+	</table>
+
+	<table class="tab" border="0px" cellpadding="10" cellspacing="10" text-color="red">
+		<tr>
+			<td>
+				<form action="addbook" method="post">
+					<label for="bookCode">Book Code : </label><input type="text" name="barcode" id="bookCode" placeholder="Enter Book Code"><br/><br/>
+					<label for="bookName">Book Name : </label> <input type="text" name="name" id="bookName" placeholder="Enter Book's name"><br/><br/>
+					<label for="bookAuthor">Book Author : </label><input type="text" name="author" id="bookAuthor" placeholder="Enter Author's Name"><br/><br/>
+					<label for="bookPrice">Book Price : </label><input type="number" name="price" placeholder="Enter the Price"><br/><br/>
+					<label for="bookQuantity">Book Qnty : </label><input type="number" name="quantity" id="bookQuantity" placeholder="Enter the quantity"><br/><br/>
+					<input class="AddBooks" type="submit" value=" Add These Books ">
+				</form>
+			</td>
+		</tr>  
+	</table>
+
+	<table class="tab">
+		<tr>
+			<td><a href="index.html">Back To Home Page</a></td>
+		</tr>
+	</table>
+	</div>
+  
+
+</body>
+</html>
